@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:c="http://www.springframework.org/schema/c"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
-
-	<bean id="studentService" class="com.hy.ly.service.impl.StudentBean"></bean>
+	<!-- 类名方式 -->
+	<bean id="studentService" class="com.hy.ly.service.impl.StudentServiceBean"></bean>
+	<!-- 静态工厂方式 -->
+	<bean id="studentService2" class="com.hy.ly.test.StudentServiceBeanFactory"
+		factory-method="createStudentServiceBean"></bean>
+	<!-- 工厂方式 -->
+	<bean id="studentBeanFactory" class="com.hy.ly.test.StudentServiceBeanFactory"></bean>
+	<bean id="studentService3" factory-bean="studentBeanFactory"
+		factory-method="createStudentServiceBean2"></bean>
 </beans>

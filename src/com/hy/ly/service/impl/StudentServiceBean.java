@@ -2,7 +2,7 @@ package com.hy.ly.service.impl;
 
 import com.hy.ly.service.StudentService;
 
-public class StudentBean implements StudentService {
+public class StudentServiceBean implements StudentService {
 
 	@Override
 	public void save(){
