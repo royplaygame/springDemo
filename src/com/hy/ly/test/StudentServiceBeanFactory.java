@@ -1,6 +1,6 @@
 package com.hy.ly.test;
 
-import com.hy.ly.service.impl.StudentServiceBean;
+import com.hy.ly.service.impl.PersonServiceBean;
 
 /**
  * 静态工厂方法
@@ -9,11 +9,11 @@ import com.hy.ly.service.impl.StudentServiceBean;
  */
 public class StudentServiceBeanFactory {
 
-	public static StudentServiceBean createStudentServiceBean(){
-		return new StudentServiceBean();
+	public static PersonServiceBean createStudentServiceBean(){
+		return new PersonServiceBean();
 	}
 	
-	public StudentServiceBean createStudentServiceBean2(){
-		return new StudentServiceBean();
+	public PersonServiceBean createStudentServiceBean2(){
+		return new PersonServiceBean();
 	}
 }

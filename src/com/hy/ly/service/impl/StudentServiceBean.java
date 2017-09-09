@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.annotation.PreDestroy;
 
 import org.springframework.stereotype.Service;
 
@@ -121,4 +120,5 @@ public class StudentServiceBean implements StudentService {
 	public void destory(){
 		System.out.println("this is destory method");
 	}
+
 }

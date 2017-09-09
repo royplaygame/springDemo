@@ -5,7 +5,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.hy.ly.dao.StudentDao;
-import com.hy.ly.service.StudentService;
+import com.hy.ly.service.PersonService;
 
 public class SpringTest {
 	
@@ -31,7 +31,7 @@ public class SpringTest {
 		
 		//自动扫包
 		AbstractApplicationContext ctx=new ClassPathXmlApplicationContext(new String[]{"autoBeans.xml"});
-		StudentService student=(StudentService) ctx.getBean("studentService");
+		PersonService student=(PersonService) ctx.getBean("studentService");
 		StudentDao studentDao=(StudentDao) ctx.getBean("studentDaoBean");
 		System.out.println(student);
 		System.out.println(studentDao);
