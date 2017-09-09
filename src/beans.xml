@@ -4,8 +4,9 @@
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
-	<!-- 类名方式 -->
-	<bean id="studentService" class="com.hy.ly.service.impl.StudentServiceBean"></bean>
+	<!-- 类名方式 作用域scope="prototype" -->
+	<bean id="studentService" class="com.hy.ly.service.impl.StudentServiceBean"
+		init-method="init" destroy-method="destory"></bean>
 	<!-- 静态工厂方式 -->
 	<bean id="studentService2" class="com.hy.ly.test.StudentServiceBeanFactory"
 		factory-method="createStudentServiceBean"></bean>
@@ -13,4 +14,63 @@
 	<bean id="studentBeanFactory" class="com.hy.ly.test.StudentServiceBeanFactory"></bean>
 	<bean id="studentService3" factory-bean="studentBeanFactory"
 		factory-method="createStudentServiceBean2"></bean>
+
+	<!-- 属性赋值setter方法 -->
+	<bean id="studentDao" class="com.hy.ly.dao.impl.StudentDaoBean"></bean>
+	<bean id="studentService4" class="com.hy.ly.service.impl.StudentServiceBean">
+		<property name="studentDao" ref="studentDao"></property>
+	</bean>
+
+	<!-- 属性赋值setter方法内部bean的方式 -->
+	<bean id="studentService5" class="com.hy.ly.service.impl.StudentServiceBean">
+		<property name="studentDao">
+			<bean class="com.hy.ly.dao.impl.StudentDaoBean"></bean>
+		</property>
+		<property name="name" value="张三"></property>
+		<property name="id" value="10001"></property>
+	</bean>
+
+	<!-- 集合的注入 -->
+	<bean id="studentService6" class="com.hy.ly.service.impl.StudentServiceBean">
+		<property name="studentDao">
+			<bean class="com.hy.ly.dao.impl.StudentDaoBean"></bean>
+		</property>
+		<property name="name" value="张三"></property>
+		<property name="id" value="10001"></property>
+		<property name="sets">
+			<set>
+				<value>第一个</value>
+				<value>第二个</value>
+				<value>第三个</value>
+				<value>第四个</value>
+			</set>
+		</property>
+		<property name="lists">
+			<list>
+				<value>列表一</value>
+				<value>列表二</value>
+				<value>列表三</value>
+			</list>
+		</property>
+		<property name="properties">
+			<props>
+				<prop key="key1">value1</prop>
+				<prop key="key2">value2</prop>
+				<prop key="key3">value3</prop>
+			</props>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="key-1" value="value-1"></entry>
+				<entry key="key-2" value="value-2"></entry>
+				<entry key="key-3" value="value-3"></entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- 构造器来注入参数 -->
+	<bean id="studentService7" class="com.hy.ly.service.impl.StudentServiceBean">
+		<constructor-arg index="0" type="com.hy.ly.dao.StudentDao" ref="studentDao"></constructor-arg>
+		<constructor-arg index="1" value="李四"></constructor-arg>
+	</bean>
 </beans>
