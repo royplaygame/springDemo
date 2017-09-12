@@ -45,7 +45,11 @@ public class AdminUserServiceImplTest {
 
 	@Test
 	public void testDelete() {
-		adminUserService.delete(1021);
+		try {
+			adminUserService.delete(1023);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test

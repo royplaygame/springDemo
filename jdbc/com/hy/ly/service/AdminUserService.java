@@ -10,7 +10,7 @@ public interface AdminUserService {
 
 	public void update(AdminUser admin);
 
-	public void delete(Integer adminNo);
+	public void delete(Integer adminNo) throws Exception;
 
 	public AdminUser getAdminUser(Integer adminNo);
 
